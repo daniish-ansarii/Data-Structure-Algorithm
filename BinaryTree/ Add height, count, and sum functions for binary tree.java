@@ -11,6 +11,7 @@ public class BinaryTreeB {
         }
     }
 
+    // Function for calculate height
     public static int height(Node root) {
         if(root == null) {
             return 0;
@@ -18,6 +19,26 @@ public class BinaryTreeB {
         int lh = height(root.left);
         int rh = height(root.right);
          return Math.max(lh, rh) + 1;
+    }
+
+    // Function for calculate Node count
+    public static int count(Node root) {
+        if(root == null) {
+            return 0;
+        }
+        int lc = count(root.left);
+        int rc = count(root.right);
+        return lc + rc + 1;
+    }
+
+    // Function for claculate sum of Nodes
+    public static int sum(Node root) {
+        if(root == null) {
+            return 0;
+        }
+        int leftsum = sum(root.left);
+        int rightsum = sum(root.right);
+        return leftsum + rightsum + root.data;
     }
 
     public static void main(String args[]){
@@ -38,6 +59,8 @@ public class BinaryTreeB {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
 
-        System.out.println(height(root));
+        System.out.println(sum(root));
     }
 }
+
+
